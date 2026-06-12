@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Shweta Sarthy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Official website of Shweta Sarthy. Explore my latest novels, short stories, and blog. Read about contemporary fiction and connect with me.">
+    <meta property="og:title" content="Shweta Sarthy | Novelist">
+    <meta property="og:description" content="Explore the world of Shweta Sarthy's novels and stories.">
+    <meta property="og:image" content="https://theshwetasarthy.netlify.app/Profile.jpg">
+    <meta property="og:url" content="https://theshwetasarthy.netlify.app/">
+    <meta property="og:type" content="website">
+    <title>Shweta Sarthy — Indian Novelist & Author | Official Website</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='32' fill='%231C1118'/><path d='M32 12 L42 42 L32 52 L22 42 Z' fill='%23C4667A'/><rect x='31' y='42' width='2' height='10' fill='%231C1118'/></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://theshwetasarthy.netlify.app/">
+    <meta name="google-site-verification" content="X_YhiMiuJ5Uil_zYBh4JMVHrJ0mm71-4Wi_d9afNRq4" />
+    <style>
+
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+    --body-bg:       #F9F6F3;
+    --sidebar-bg:    #1C1118;
+    --card-bg:       #FFFFFF;
+    --card-alt:      #F4EFF3;
+    --text:          #1C1118;
+    --muted:         #6B6068;
+    --sidebar-text:  #EDE5E8;
+    --sidebar-muted: #9E8F95;
+    --border:        #E8DDE4;
+    --accent:        #C4667A;
+    --accent-dark:   #A84D62;
+    --accent-light:  #F0DEE4;
+    --gold:          #C9A870;   /* sidebar ornament only */
+    --sh-sm:  0 2px 12px rgba(28,17,24,0.07);
+    --sh-md:  0 8px 32px rgba(28,17,24,0.13);
+    --sh-lg:  0 18px 56px rgba(28,17,24,0.20);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+    --r: 10px;
+}
+body.dark-mode {
+    --body-bg:   #0D0810;
+    --card-bg:   #19111C;
+    --card-alt:  #19111C;
+    --text:      #EDE5E8;
+    --muted:     #9E8F95;
+    --border:    #2C1E28;
+    --accent:    #D4788C;
+    --accent-dark: #BD6070;
+    --accent-light: #2A1020;
+    --sh-sm: 0 2px 12px rgba(0,0,0,0.35);
+    --sh-md: 0 8px 32px rgba(0,0,0,0.50);
+    --sh-lg: 0 18px 56px rgba(0,0,0,0.65);
+}
+
+/* ══════════════════════════════════════
+   PAPER GRAIN OVERLAY
+══════════════════════════════════════ */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.038;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.80' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    background-repeat: repeat;
+}
+
+/* ══════════════════════════════════════
+   BASE
+══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Georgia', serif;
+    color: var(--text);
+    line-height: 1.75;
+    background-color: var(--body-bg);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ══════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════ */
+.sidebar {
+    flex: 0 0 294px;
+    width: 294px;
+    background-color: var(--sidebar-bg);
+    padding: 60px 30px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow: hidden;        /* clips the blobs */
+    z-index: 100;
+}
+
+/* ── Ambient ink-wash blobs ── */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.blob-1 {
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(196,102,122,0.16) 0%, transparent 68%);
+    top: -90px; left: -90px;
+    animation: blobA 18s ease-in-out infinite alternate;
+}
+.blob-2 {
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(201,168,112,0.11) 0%, transparent 68%);
+    top: 42%; right: -80px;
+    animation: blobB 22s ease-in-out infinite alternate;
+}
+.blob-3 {
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(196,102,122,0.09) 0%, transparent 68%);
+    bottom: -60px; left: -50px;
+    animation: blobC 20s ease-in-out infinite alternate;
+}
+@keyframes blobA { from{transform:translate(0,0)} to{transform:translate(28px,38px)} }
+@keyframes blobB { from{transform:translate(0,0)} to{transform:translate(-22px,-32px)} }
+@keyframes blobC { from{transform:translate(0,0)} to{transform:translate(18px,-28px)} }
+
+/* ── Book-spine vertical text ── */
+.sidebar-spine {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: 'Raleway', sans-serif;
+    font-size: 7.5px;
+    letter-spacing: 9px;
+    text-transform: uppercase;
+    color: rgba(201,168,112,0.22);
+    white-space: nowrap;
+    user-select: none;
+}
+
+/* ── Controls ── */
+.sidebar-controls {
+    position: absolute;
+    top: 14px; left: 14px; right: 14px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+.ctrl-btn {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.05);
+    color: var(--sidebar-muted);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s;
+    position: relative; z-index: 2;
+}
+.ctrl-btn:hover {
+    background: rgba(196,102,122,0.20);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+.hamburger { display: none; }
+
+/* ── Profile ── */
+.profile-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+.profile-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,102,122,0.22);
+    pointer-events: none;
+}
+.profile-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,102,122,0.08);
+    pointer-events: none;
+}
+.profile-img {
+    width: 148px; height: 148px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(196,102,122,0.50);
+    box-shadow: 0 0 0 8px rgba(196,102,122,0.07), var(--sh-md);
+    background-color: #3A2A30;
+    display: block;
+    position: relative; z-index: 1;
+}
+
+/* ── Sidebar type ── */
+.sidebar-role {
+    font-family: 'Raleway', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 7px;
+    position: relative; z-index: 1;
+}
+.sidebar h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--sidebar-text);
+    margin-bottom: 9px;
+    position: relative; z-index: 1;
+}
+.tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14.5px; font-style: italic;
+    color: var(--sidebar-muted);
+    line-height: 1.55;
+    position: relative; z-index: 1;
+}
+
+/* ── Ornamental sidebar divider ── */
+.sidebar-ornament {
+    display: flex; align-items: center; gap: 8px;
+    margin: 26px auto;
+    width: 100px;
+    position: relative; z-index: 1;
+}
+.sidebar-ornament span { flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(196,102,122,0.35), transparent); }
+.sidebar-ornament em { font-style: normal; font-size: 8px; color: rgba(196,102,122,0.55); }
+
+/* ── Nav ── */
+.nav-menu {
+    width: 100%; display: flex; flex-direction: column; gap: 2px;
+    margin-bottom: 32px;
+    position: relative; z-index: 1;
+}
+.nav-btn {
+    display: block; width: 100%;
+    padding: 11px 16px;
+    background: transparent; border: none;
+    color: var(--sidebar-muted);
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 4px; text-transform: uppercase;
+    cursor: pointer; border-radius: 5px;
+    position: relative;
+    transition: color 0.25s, background 0.25s;
+}
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 8px; left: 16px;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.4s var(--ease-out);
+}
+.nav-btn:hover { color: var(--sidebar-text); background: rgba(255,255,255,0.04); }
+.nav-btn:hover::after, .nav-btn.active::after { width: 20px; }
+.nav-btn.active { color: var(--sidebar-text); }
+
+/* ── Social ── */
+.social-links {
+    margin-top: auto; padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    width: 100%; display: flex; justify-content: center; gap: 13px;
+    position: relative; z-index: 1;
+}
+.social-links a {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.09);
+    color: var(--sidebar-muted);
+    font-size: 14px; text-decoration: none;
+    transition: all 0.25s;
+}
+.social-links a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(196,102,122,0.12);
+    transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   CONTENT
+══════════════════════════════════════ */
+.content {
+    flex: 1;
+    padding: 64px 80px;
+    background-color: var(--body-bg);
+    height: 100vh; overflow-y: auto;
+    transition: background-color 0.3s;
+}
+.content::-webkit-scrollbar { width: 4px; }
+.content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+/* ── Tabs ── */
+.tab-content { display: none; }
+.active-tab  { display: block; animation: inkReveal 0.5s var(--ease-out) both; }
+@keyframes inkReveal {
+    from { opacity: 0; transform: translateY(16px); filter: blur(2px); }
+    to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+/* ── Eyebrow ── */
+.eyebrow {
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+/* ── Section h2 ── */
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.3px;
+    line-height: 1.15;
+    margin-bottom: 36px;
+}
+h2::after {
+    content: '';
+    display: block;
+    width: 44px; height: 2px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    margin-top: 16px;
+}
+
+/* ── h3 ── */
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px; font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+/* ── Body copy ── */
+p {
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.88;
+    margin-bottom: 18px;
+}
+p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════
+   FEATURED BOOK
+══════════════════════════════════════ */
+.featured-book {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 36px 36px 36px 40px;
+    margin-bottom: 20px;
+    box-shadow: var(--sh-sm);
+    position: relative; overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+.featured-book::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, rgba(201,168,112,0.5) 60%, transparent 100%);
+}
+.featured-book:hover { box-shadow: var(--sh-md); }
+
+/* Book cover — tilted at rest, springs to upright on hover */
+.book-cover {
+    width: 124px; height: 186px;
+    object-fit: cover;
+    border-radius: 3px;
+    background-color: #3A2A30;
+    display: block; flex-shrink: 0;
+}
+.featured-book .book-cover {
+    transform: rotate(-4deg);
+    box-shadow: 10px 16px 38px rgba(28,17,24,0.40), 4px 4px 0 rgba(28,17,24,0.12);
+    transition: transform 0.5s var(--ease-spring), box-shadow 0.5s ease;
+}
+.featured-book:hover .book-cover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 6px 10px 28px rgba(28,17,24,0.28);
+}
+
+.featured-book-info { display: flex; flex-direction: column; gap: 11px; }
+
+.new-badge {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    padding: 3px 11px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 8.5px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    border-radius: 3px; align-self: flex-start;
+}
+.featured-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 33px; font-weight: 600;
+    color: var(--text); line-height: 1.15;
+}
+.book-genre {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted);
+}
+
+/* ── Buttons ── */
+.buy-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 22px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.25s;
+    border: 1.5px solid var(--accent);
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover {
+    background: var(--accent-dark); border-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 16px rgba(196,102,122,0.38);
+}
+.btn-outline { background: transparent; color: var(--accent); }
+.btn-outline:hover {
+    background: var(--accent); color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 16px rgba(196,102,122,0.38);
+}
+
+/* ══════════════════════════════════════
+   ORNAMENTAL DIVIDER
+══════════════════════════════════════ */
+.ornament {
+    display: flex; align-items: center; gap: 14px;
+    margin: 56px 0;
+}
+.orn-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+}
+.orn-mark {
+    font-size: 10px; color: var(--accent); opacity: 0.55;
+    letter-spacing: 4px;
+}
+
+/* ══════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════ */
+.about-section h2 { margin-bottom: 28px; }
+
+/* Drop cap on first paragraph */
+.drop-cap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 76px; font-weight: 600;
+    float: left; line-height: 0.72;
+    margin-right: 10px; margin-top: 12px;
+    color: var(--accent);
+}
+
+/* ── Pull quote — the bold risk ── */
+/* Full-bleed, centered, poetic — not a callout box */
+.pullquote {
+    margin: 52px -40px;
+    padding: 62px 72px;
+    background: var(--card-alt);
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+.pullquote::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 240px; line-height: 1;
+    color: var(--accent); opacity: 0.08;
+    position: absolute; top: -24px; left: 24px;
+    pointer-events: none; user-select: none;
+}
+.pullquote::after {
+    content: '';
+    position: absolute; left: 50%; bottom: 0;
+    transform: translateX(-50%);
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+}
+.pullquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-style: italic;
+    color: var(--text); line-height: 1.80;
+    max-width: 620px; margin: 0 auto;
+    position: relative;
+}
+
+/* Contact row */
+.contact-row {
+    display: flex; align-items: center; gap: 14px;
+    margin-top: 44px; padding: 22px 26px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    box-shadow: var(--sh-sm);
+}
+.contact-row i { color: var(--accent); font-size: 17px; flex-shrink: 0; }
+.contact-row p { font-size: 14.5px; margin: 0; }
+.contact-row a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.contact-row a:hover { text-decoration: underline; }
+
+/* ══════════════════════════════════════
+   BOOKS TAB
+══════════════════════════════════════ */
+.books-list { display: flex; flex-direction: column; gap: 22px; }
+
+.book-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 30px; align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r); padding: 28px;
+    box-shadow: var(--sh-sm);
+    transition: box-shadow 0.3s, transform 0.3s;
+    overflow: hidden;
+}
+.book-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.book-card { position: relative; }
+.book-card:hover { box-shadow: var(--sh-md); transform: translateY(-3px); }
+.book-card:hover::before { opacity: 1; }
+
+/* Book covers tilt on hover */
+.book-card .book-cover {
+    transition: transform 0.45s var(--ease-spring), box-shadow 0.45s ease;
+    box-shadow: var(--sh-md);
+}
+.book-card:hover .book-cover {
+    transform: rotate(-2deg) scale(1.04);
+    box-shadow: var(--sh-lg);
+}
+
+.book-card-info { display: flex; flex-direction: column; gap: 7px; }
+.book-year {
+    font-family: 'Raleway', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--accent);
+}
+
+/* ══════════════════════════════════════
+   REVIEWS TAB
+══════════════════════════════════════ */
+.reviews-grid { display: flex; flex-direction: column; gap: 24px; }
+
+.review-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 42px 38px 30px;
+    position: relative;
+    box-shadow: var(--sh-sm);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.review-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); }
+
+/* Ink-ink decorative quote bleed */
+.review-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 110px; line-height: 1;
+    color: var(--accent); opacity: 0.10;
+    position: absolute; top: 8px; left: 20px;
+    pointer-events: none; user-select: none;
+}
+
+.review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic;
+    color: var(--muted); line-height: 1.88;
+    margin-bottom: 26px; position: relative;
+}
+.reviewer-info {
+    display: flex; align-items: center; gap: 13px;
+    padding-top: 18px; border-top: 1px solid var(--border);
+}
+.reviewer-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent-light);
+    border: 1.5px solid rgba(196,102,122,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--accent); flex-shrink: 0;
+}
+.reviewer-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text); display: block; margin-bottom: 2px;
+}
+.reviewer-role {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px; color: var(--muted);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .content { padding: 52px 44px; }
+    .pullquote { margin: 44px -24px; padding: 52px 48px; }
+}
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .sidebar {
+        flex: 0 0 auto; width: 100%; height: auto;
+        position: relative; overflow: hidden;
+        padding: 66px 24px 36px;
+    }
+    .hamburger {
+        display: flex; position: fixed;
+        top: 12px; right: 12px; z-index: 1001;
+        background: #1C1118;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.5);
+    }
+    .theme-toggle {
+        position: fixed; top: 12px; left: 12px; z-index: 1001;
+        background: #1C1118;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.5);
+    }
+    .nav-menu { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .content { height: auto; overflow: visible; padding: 36px 20px 60px; }
+    .featured-book { grid-template-columns: 1fr; text-align: center; padding: 28px; }
+    .featured-book .book-cover { margin: 0 auto; transform: rotate(0); }
+    .featured-book .new-badge { align-self: center; }
+    .book-card { grid-template-columns: 1fr; text-align: center; }
+    .book-card .book-cover { margin: 0 auto; }
+    .buy-buttons { justify-content: center; }
+    .pullquote { margin: 40px -20px; padding: 44px 28px; }
+    .pullquote p { font-size: 20px; }
+    .contact-row { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+    </style>
+</head>
+<body>
+<div class="container">
+
+<!-- ════════════ SIDEBAR ════════════ -->
+<aside class="sidebar">
+    <!-- Ambient ink blobs -->
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+
+    <!-- Book spine text -->
+    <span class="sidebar-spine" aria-hidden="true">Novelist &nbsp;·&nbsp; Author &nbsp;·&nbsp; Shweta Sarthy</span>
+
+    <div class="sidebar-controls">
+        <button class="ctrl-btn theme-toggle" onclick="toggleTheme()" title="Toggle light / dark mode">
+            <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="ctrl-btn hamburger" onclick="scrollTop()" title="Back to top">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="profile-wrapper">
+        <img src="profile.jpg" alt="Shweta Sarthy — Indian Novelist and Author" class="profile-img">
+    </div>
+
+    <p class="sidebar-role">Novelist &nbsp;·&nbsp; Author</p>
+    <h1>Shweta Sarthy</h1>
+    <p class="tagline">Turning shadows into creative fire.</p>
+
+    <div class="sidebar-ornament" aria-hidden="true">
+        <span></span><em>✦</em><span></span>
+    </div>
+
+    <nav class="nav-menu" id="nav-menu">
+        <button class="nav-btn active" onclick="openTab('home', this)">About</button>
+        <button class="nav-btn"        onclick="openTab('books', this)">Books</button>
+        <button class="nav-btn"        onclick="openTab('reviews', this)">Reviews</button>
+    </nav>
+
+    <div class="social-links">
+        <a href="https://instagram.com/theshwetasarthy" target="_blank" rel="noopener" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://x.com/shweta_sarthy" target="_blank" rel="noopener" title="X / Twitter">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+        <a href="mailto:theshwetasarthy@gmail.com" title="Email Shweta">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+    </div>
+</aside>
+
+<!-- ════════════ CONTENT ════════════ -->
+<main class="content" id="main-content">
+
+    <!-- ── HOME / ABOUT ── -->
+    <div id="home" class="tab-content active-tab">
+
+        <span class="eyebrow">Latest Release</span>
+        <h2>The Battle of Touch</h2>
+
+        <div class="featured-book">
+            <img src="the-battle-of-touch.png" alt="The Battle Of Touch by Shweta Sarthy" class="book-cover">
+            <div class="featured-book-info">
+                <span class="new-badge">New Release</span>
+                <p class="featured-title">The Battle of Touch</p>
+                <p class="book-genre">Novel &nbsp;·&nbsp; Contemporary Fiction</p>
+                <p>When love becomes her fiercest weapon — an intimate story of vulnerability, desire, and the courage it takes to truly feel.</p>
+                <div class="buy-buttons">
+                    <a href="https://www.amazon.in/dp/B0GCZPKLJV" target="_blank" rel="noopener" class="btn btn-primary">
+                        <i class="fa-brands fa-amazon"></i> India
+                    </a>
+                    <a href="https://www.amazon.com/dp/B0GCZPKLJV" target="_blank" rel="noopener" class="btn btn-outline">
+                        <i class="fa-brands fa-amazon"></i> International
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ornament" aria-hidden="true">
+            <span class="orn-line"></span>
+            <span class="orn-mark">✦ ✦ ✦</span>
+            <span class="orn-line"></span>
+        </div>
+
+        <div class="about-section">
+            <span class="eyebrow">About the Author</span>
+            <h2>Shweta Sarthy</h2>
+
+            <p class="drop-cap">Shweta Sarthy is an Indian novelist whose work serves as a bridge between the silence of healing and the roar of self-discovery. Her writing doesn't just tell stories — it maps the emotional geography of women who have been tested by life and emerged as architects of their own fate.</p>
+
+            <p>From her roots in the heart of Madhya Pradesh to her current academic journey in Tamil Nadu, Shweta's evolution as a writer is deeply personal. Her transition from the depths of depression to a life anchored in self-love forms the visceral heartbeat of her prose — allowing her to write with a messy honesty that captures the grit and grace of the human condition.</p>
+
+            <div class="pullquote">
+                <p>I believe a woman is the supreme power of the universe: delicate enough to feel every shadow, yet far too resilient to be broken. When she is nourished by love, she becomes a force that can conquer any world.</p>
+            </div>
+
+            <p>Following the lyrical exploration of <em>Dread of Love</em> and the poignant debut of <em>Rose Beneath the Soil</em>, her latest work, <strong>The Battle of Touch</strong>, stands as her most intimate project to date — an invitation to witness the ultimate strength found in vulnerability.</p>
+
+            <div class="contact-row">
+                <i class="fa-solid fa-paper-plane"></i>
+                <p>For inquiries, collaborations, or just to say hi — <a href="mailto:theshwetasarthy@gmail.com">theshwetasarthy@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── BOOKS ── -->
+    <div id="books" class="tab-content">
+        <span class="eyebrow">Bibliography</span>
+        <h2>Books by Shweta Sarthy</h2>
+
+        <div class="books-list">
+            <div class="book-card">
+                <img src="the-battle-of-touch.png" alt="The Battle of Touch by Shweta Sarthy" class="book-cover">
+                <div class="book-card-info">
+                    <span class="book-year">Recent &nbsp;·&nbsp; Novel</span>
+                    <h3>The Battle of Touch</h3>
+                    <p>When love becomes her fiercest weapon — an exploration of emotional courage and the transformative power found in vulnerability.</p>
+                    <div class="buy-buttons">
+                        <a href="https://www.amazon.in/dp/B0GCZPKLJV" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-amazon"></i> India</a>
+                        <a href="https://www.amazon.com/dp/B0GCZPKLJV" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-amazon"></i> International</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="rose-beneath-the-soil.png" alt="Rose Beneath the Soil by Shweta Sarthy" class="book-cover">
+                <div class="book-card-info">
+                    <span class="book-year">2023 &nbsp;·&nbsp; Debut Novel</span>
+                    <h3>Rose Beneath the Soil</h3>
+                    <p>Even the brightest stars are engulfed when the darkness sets — a haunting debut that explores loss, resilience, and what it means to bloom again.</p>
+                    <div class="buy-buttons">
+                        <a href="https://www.amazon.in/dp/B0C62M9NY9" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-amazon"></i> India</a>
+                        <a href="https://www.amazon.com/dp/B0C62M9NY9" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-amazon"></i> International</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="dread-of-love.jpeg" alt="Dread of Love by Shweta Sarthy" class="book-cover">
+                <div class="book-card-info">
+                    <span class="book-year">2022 &nbsp;·&nbsp; Anthology</span>
+                    <h3>Dread of Love</h3>
+                    <p>Love is beautiful, and so is its pain — a lyrical anthology that dares to sit with the ache of loving and the quiet beauty of letting go.</p>
+                    <div class="buy-buttons">
+                        <a href="https://www.amazon.in/dp/B09W5Z9GYJ" target="_blank" rel="noopener" class="btn btn-primary"><i class="fa-brands fa-amazon"></i> India</a>
+                        <a href="https://www.amazon.com/dp/B09W5Z9GYJ" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-amazon"></i> International</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── REVIEWS ── -->
+    <div id="reviews" class="tab-content">
+        <span class="eyebrow">Reader Voices</span>
+        <h2>What Readers Say</h2>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p class="review-text">I've read her books and I've been there when she wrote them — and it's not just books, let me tell you that. Everything she ever wrote reflects reality in its rawest form. No sugarcoating. Just love, pain, and grief. If you've ever felt that, you'll love her books, because you can feel those emotions right through her words. One of the best authors and people, ever. ❤️</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">A</div>
+                    <div>
+                        <span class="reviewer-name">Anupriya Wani</span>
+                        <span class="reviewer-role">Artist</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <p class="review-text">The Battle of Touch is a raw and tender exploration of vulnerability, healing, and emotional courage. With striking honesty and poetic depth, Shweta Sarthy reminds us that true strength is often found in feeling — fully and fearlessly.</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">C</div>
+                    <div>
+                        <span class="reviewer-name">Chetan Galphat</span>
+                        <span class="reviewer-role">Reader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <p class="review-text">Shweta Sarthy is one of those rare writers whose words come straight from the heart and gently find their way into yours. Everything she writes feels deeply human, relatable, and emotionally rich. What makes her work truly special is its honesty — every piece leaves you thinking, feeling, and connecting with yourself a little more.</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">B</div>
+                    <div>
+                        <span class="reviewer-name">Bhoomi Yadav</span>
+                        <span class="reviewer-role">Reader</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <p class="review-text">I've known Shweta for years — back from our school days, when she would quietly write and share pieces long before she ever became an author. I've seen her grow, evolve, and pour herself into words over time. Her words don't try to impress; they simply tell the truth. You don't just read them — you feel them. And having witnessed her journey from the very beginning makes her work even more powerful and real to me. 🫶🏻✨</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">A</div>
+                    <div>
+                        <span class="reviewer-name">Anshita Sable</span>
+                        <span class="reviewer-role">Reader &amp; Longtime Friend</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+</div>
+
+<script>
+let activeTab = 'home';
+
+function openTab(tabName, btn) {
+    if (tabName === activeTab) return;
+    activeTab = tabName;
+    document.querySelectorAll('.tab-content').forEach(el => { el.style.display = 'none'; });
+    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById(tabName);
+    target.style.display = 'block';
+    target.classList.remove('active-tab');
+    void target.offsetWidth;
+    target.classList.add('active-tab');
+    if (btn) btn.classList.add('active');
+    const panel = document.getElementById('main-content');
+    if (panel) panel.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const p = document.getElementById('main-content');
+    if (p) p.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleTheme() {
+    const icon = document.getElementById('theme-icon');
+    document.body.classList.toggle('dark-mode');
+    const dark = document.body.classList.contains('dark-mode');
+    icon.classList.replace(dark ? 'fa-moon' : 'fa-sun', dark ? 'fa-sun' : 'fa-moon');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+
+window.onload = function () {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+    }
+};
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shweta Sarthy",
+  "url": "https://theshwetasarthy.netlify.app/",
+  "jobTitle": "Novelist",
+  "sameAs": [
+    "https://instagram.com/theshwetasarthy",
+    "https://x.com/shweta_sarthy",
+    "https://www.amazon.in/dp/B0GCZPKLJV"
+  ]
+}
+</script>
+</body>
+</html>
